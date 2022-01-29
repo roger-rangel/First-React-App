@@ -2,14 +2,14 @@
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import Palette from './Palette';
-// import PaletteList from './PaletteList';
+import PaletteList from './PaletteList';
 
 function App() { 
     return (
       <Routes>
         <Route
           path="/"
-          element={<h1>PALETTE LIST GOES HERE</h1>}
+          element={<PaletteList />}
         />
         <Route
           path="/palette/:id"
