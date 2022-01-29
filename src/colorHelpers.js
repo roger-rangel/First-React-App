@@ -71,4 +71,6 @@ function getScale(hexColor, numberOfColors) {
         .colors(numberOfColors)
 }
 
+
+
 export { generatePalette };

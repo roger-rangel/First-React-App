@@ -1,40 +1,45 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-useless-constructor */
-import React, { Component } from 'react';
-import ColorBox from './ColorBox'
-import './Palette.css'
-import Navbar from './Navbar'
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import ColorBox from './ColorBox';
+import './Palette.css';
+import Navbar from './Navbar';
+import seedColors from './seedColors';
+import { generatePalette } from './colorHelpers';
 
 
-class Palette extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { level: 500, format: "hex" };
-    this.changeLevel = this.changeLevel.bind(this);
-    this.changeFormat = this.changeFormat.bind(this);
+export default function Palette() {
+  const { id } = useParams(); //useParams to get the :paletteId
+  
+  const findPalette = (id) => {
+    return seedColors.find(function (palette) {
+      return palette.id === id;
+    });
+  };
+  
+  const palette = generatePalette(findPalette(id));
+
+  const [level, setLevel] = useState(500);
+  const [format, setFormat] = useState('hex');
+  const colorBoxes = palette.colors[level].map(color => (
+    <ColorBox background={color[format]} name={color.name} key={color.id} />
+  ));
+  
+  const changeLevel = (level) => {
+    setLevel(level);
   }
   
-  changeLevel(level) {
-    this.setState({ level });
-    console.log(level);
+  const changeFormat = (val) => {
+    setFormat(val);
   }
   
-  changeFormat(val) {
-    this.setState({format: val})
-  }
-  
-  render() {
-    const { colors, paletteName, emoji } = this.props.palette;
-    const { level, format } = this.state;
-    const colorBoxes = colors[level].map(color => (
-      <ColorBox background = {color[format]} name = {color.name} key = {color.id} />
-    ))
     return (
       <div className='Palette'>
         <Navbar
           level={level}
-          changeLevel={this.changeLevel}
-          handleChange={this.changeFormat}
+          changeLevel={changeLevel}
+          handleChange={changeFormat}
         />
           
         {/* Navbar goes here */}
@@ -43,11 +48,10 @@ class Palette extends Component {
         </div>
         {/* footer goes here */}
         <footer className='Palette-footer'>
-          {paletteName}
-          <span className='emoji'>{emoji}</span>
+          {palette.paletteName}
+          <span className='emoji'>{palette.emoji}</span>
         </footer>
       </div>
     );
-  }
-}
-export default Palette;
+};
+

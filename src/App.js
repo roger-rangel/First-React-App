@@ -1,38 +1,24 @@
 /* eslint-disable no-unused-vars */
-import React, { Component, useEffect } from 'react';
+import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import Palette from './Palette';
-import seedColors from './seedColors';
-import { generatePalette } from './colorHelpers';
+// import PaletteList from './PaletteList';
 
-
-
-
-class App extends Component {
-  render() {
-   
-    const PaletteList = () => <h1>PALETTE LIST GOES HERE</h1>;
-    const IndividualPalette = () => <h1>INDIVIDUAL PALETTE</h1>;
-
+function App() { 
     return (
-
       <Routes>
         <Route
           path="/"
-          element={(  
-             <PaletteList />
-          )} />
+          element={<h1>PALETTE LIST GOES HERE</h1>}
+        />
         <Route
           path="/palette/:id"
-          element={(  
-             <IndividualPalette />
-          )} />
+          element={<Palette />}
+        />
       </Routes>
       
- 
       //  <Palette palette={generatePalette(seedColors[4])} />
-    );
+    );  
   }
-}
 
 export default App;
