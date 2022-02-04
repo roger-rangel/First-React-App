@@ -1,12 +1,12 @@
 import React from 'react';
-import { withStyles } from '@mui/styles';
+import { makeStyles } from '@mui/styles';
 
-const styles = {
+const useStyles = makeStyles({
   root: {
     backgroundColor: "white",
     border: " 1px solid black",
     borderRadius: "5px",
-    padding: "0 5rem",
+    padding: "0.5rem",
     position: "relative",
     overflow: "hidden",
     "&hover": {
@@ -14,7 +14,11 @@ const styles = {
     }
   },
   colors: {
-    backgroundColor: "white"
+    backgroundColor: "#dae1e4",
+    height: "150px",
+    width: "100%",
+    borderRadius: "5px",
+    overflow: "hidden"
   },
   title: {
     display: "flex",
@@ -38,21 +42,28 @@ const styles = {
     position: "relative",
     marginBottom: "-3.5px"
   }
-};
+});
 
-function MiniPalette(props) {
-  const { classes, paletteName, emoji } = props;
-  console.log(classes.colors);
+export default function MiniPalette(props) {
+
+  const { paletteName, emoji, colors } = props;
+  const classes = useStyles();
   
+  const miniColorBoxes = colors.map(color => (
+    <div
+      className={classes.miniColor}
+      style={{ backgroundColor: color.color }}
+      key={color.name}
+    />
+  ));
   
   return (
     <div className={classes.root}>
-      <div className={classes.colors}> 
-        <h1 className={classes.title}>{paletteName} <span className={classes.emoji}>{emoji}</span></h1>
-      </div>
-      
+      <div className={classes.colors}>{ miniColorBoxes }</div> 
+      <h5 className={classes.title}>
+        {paletteName} <span className={classes.emoji}>{emoji}</span>
+      </h5>
     </div>
   )
 }
 
-export default withStyles(styles)(MiniPalette);
