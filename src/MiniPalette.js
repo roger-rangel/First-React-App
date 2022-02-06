@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   },
   colors: {
     backgroundColor: "#dae1e4",
-    height: "150px",
+    height: "90px",
     width: "100%",
     borderRadius: "5px",
     overflow: "hidden"
@@ -27,6 +27,7 @@ const useStyles = makeStyles({
     margin: "0",
     color: "black",
     paddingTop: "0.5rem",
+    paddingBottom: "0.3rem",
     fontSize: "1rem",
     position: "relative"
   },

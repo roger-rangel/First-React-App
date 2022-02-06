@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     justifyContent: "center"
   },
   container: {
-    width: "50%",
+    width: "60%",
     display: "flex",
     alignItems: "flex-start",
     flexDirection: "column",
