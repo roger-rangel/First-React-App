@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
+import { useNavigate } from "react-router-dom"; 
 // import { Link } from "react-router-dom";
 import seedColors from './seedColors';
 import MiniPalette from "./MiniPalette";
@@ -34,19 +35,31 @@ const useStyles = makeStyles({
     gridGap: "5%"
   }
 });
+
+
+
 export default function PaletteList() {
+ 
   const palettes = seedColors;
   const classes = useStyles();
+  let navigate = useNavigate(); 
+  
+  function goToPalette(id) {
+     navigate(`/palette/${id}`);
+  }
   
   return (
+    
     <div className={classes.root}>
       <div className={classes.container}>
         <nav className={classes.nav}>
           <h1>React Colors</h1>
         </nav>
         <div className={classes.palettes}>
+          
               {palettes.map(palette => (
-                <MiniPalette {...palette} />
+                
+                <MiniPalette {...palette} handleClick={() => goToPalette(palette.id)}/>
               ))}
         </div>
       </div>

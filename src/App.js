@@ -17,7 +17,6 @@ function App() {
         />
       </Routes>
       
-      //  <Palette palette={generatePalette(seedColors[4])} />
     );  
   }
 

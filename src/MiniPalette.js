@@ -46,7 +46,7 @@ const useStyles = makeStyles({
 
 export default function MiniPalette(props) {
 
-  const { paletteName, emoji, colors } = props;
+  const { paletteName, emoji, colors, handleClick } = props;
   const classes = useStyles();
   
   const miniColorBoxes = colors.map(color => (
@@ -58,7 +58,7 @@ export default function MiniPalette(props) {
   ));
   
   return (
-    <div className={classes.root}>
+    <div className={classes.root} onClick={handleClick}>
       <div className={classes.colors}>{ miniColorBoxes }</div> 
       <h5 className={classes.title}>
         {paletteName} <span className={classes.emoji}>{emoji}</span>
