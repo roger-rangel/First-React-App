@@ -1,5 +1,6 @@
 /* eslint-disable no-useless-constructor */
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import './ColorBox.css'
 
@@ -32,8 +33,11 @@ class ColorBox extends Component {
                 <span>{name}</span>
               </div>
               <button className='copy-button'>Copy</button>
-            </div>
-            <span className='see-more'>More</span>
+          </div>
+          <Link to="/" onClick={e => e.stopPropagation()}>
+             <span className='see-more'>More</span>
+          </Link>
+           
         </div>
       </CopyToClipboard>
     );
