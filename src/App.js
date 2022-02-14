@@ -3,6 +3,7 @@ import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import Palette from './Palette';
 import PaletteList from './PaletteList';
+import SingleColorPalette from './SingleColorPalette';
 
 function App() { 
     return (
@@ -18,7 +19,7 @@ function App() {
         <Route
            exact
            path='/palette/:paletteId/:colorId'
-           element={ <h1>SINGLE COLOR PAGE!</h1>}
+           element={ <SingleColorPalette />}
          />
       </Routes>
       
