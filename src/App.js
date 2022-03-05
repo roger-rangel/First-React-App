@@ -22,6 +22,7 @@ function App() {
            element={ <SingleColorPalette />}
          />
       </Routes>
+     
       
     );  
   }
