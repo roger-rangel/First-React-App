@@ -43,13 +43,12 @@ export default function Palette() {
   
     return (
       <div className='Palette'>
+        {/* Navbar goes here */}
         <Navbar
           level={level}
           changeLevel={changeLevel}
           handleChange={changeFormat}
-        />
-          
-        {/* Navbar goes here */}
+        /> 
         <div className='Palette-colors'>
           {colorBoxes}
         </div>

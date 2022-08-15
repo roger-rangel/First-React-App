@@ -4,10 +4,11 @@ import { useParams } from 'react-router-dom';
 import seedColors from './seedColors';
 import { generatePalette } from './colorHelpers';
 import ColorBox from './ColorBox';
+import Navbar from './Navbar';
 
 function SingleColorPalette() {
     const { paletteId, colorId } = useParams(); //useParams to get the :paletteId
-    
+    const [format, setFormat] = useState('hex')
  
     const findPalette = (paletteId) => {
         return seedColors.find(function (palette) {
@@ -29,12 +30,21 @@ function SingleColorPalette() {
       return allShades.slice(1)
     }
 
+    const changeFormat = (val) => {
+      setFormat(val);
+    }
+
     const colorBoxes = shades.map((color, index) => (
       <ColorBox key={color.id + index} name={color.name} background={color.hex} showLink={false} />
       ))
     console.log(shades);
         return(
             <div className="Palette">
+                <Navbar
+                    // level={level}
+                    // changeLevel={changeLevel}
+                    handleChange={changeFormat}
+                 />
                 <h1>Single Color Palette</h1>
                 <div className="Palette-colors">
                   {colorBoxes}
